@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function checkAuth() {
         try {
-            const res = await fetch('http://localhost:3000/api/me');
+            const res = await fetch("https://sleeklink-zfoo.onrender.com/api/links");
             if (res.ok) {
                 const data = await res.json();
                 showApp(data.username);
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const username = document.getElementById('username').value;
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
-        const endpoint = isLogin ? 'http://localhost:3000/login' : 'http://localhost:3000/signup';
+        const endpoint = isLogin ? "https://sleeklink-zfoo.onrender.com/login" : "https://sleeklink-zfoo.onrender.com/signup";
 
         try {
             const res = await fetch(endpoint, {
@@ -141,14 +141,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Logout
     logoutBtn.addEventListener('click', async () => {
-        await fetch('http://localhost:3000/api/logout', { method: 'POST' });
+        await fetch("https://sleeklink-zfoo.onrender.com/api/logout", { method: "POST" });
         showAuth();
     });
 
     // Load Links
     async function loadLinks() {
         try {
-            const res = await fetch('http://localhost:3000/api/links');
+            const res = await fetch("https://sleeklink-zfoo.onrender.com/api/links");
             if (res.ok) {
                 const links = await res.json();
                 renderStats(links);
@@ -244,9 +244,9 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.disabled = true;
 
         try {
-            const response = await fetch('http://localhost:3000/api/shorten', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+            const response = await fetch("https://sleeklink-zfoo.onrender.com/api/shorten", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ originalUrl, platform })
             });
 
