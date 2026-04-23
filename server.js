@@ -1,9 +1,10 @@
+const path = require("path");
 const express = require('express');
 const app = express();
 const port = 3000;
 
 app.use(express.json());
-
+app.use(express.static(path.join(__dirname, "public")));
 // Enable CORS to avoid Network errors from frontend
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -18,7 +19,7 @@ app.use((req, res, next) => {
 
 // Basic route requirement
 app.get('/', (req, res) => {
-  res.send('Server is running');
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 // In-memory user store
