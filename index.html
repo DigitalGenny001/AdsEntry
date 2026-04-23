@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SleekLink | URL Shortener</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-glow"></div>
+
+    <nav id="navbar" class="hidden">
+        <div class="nav-content">
+            <h2 class="logo-small">Sleek<span class="highlight">Link</span></h2>
+            <ul class="nav-links">
+                <li><a href="#" id="nav-dashboard" class="active">Dashboard</a></li>
+                <li><a href="#" id="nav-links">My Links</a></li>
+            </ul>
+            <div class="user-menu">
+                <span id="welcome-msg" class="user-greeting"></span>
+                <button id="logout-btn" class="btn-text-only">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Auth Section -->
+        <section id="auth-section" class="box auth-box">
+            <header class="auth-header">
+                <h1 class="logo">Sleek<span class="highlight">Link</span></h1>
+                <p class="subtitle">Log in to manage your short links.</p>
+            </header>
+
+            <form id="auth-form" autocomplete="off">
+                <div class="input-container">
+                    <input type="text" id="username" placeholder="Username" required>
+                </div>
+                <div class="input-container">
+                    <input type="text" id="email" placeholder="email" required>
+                </div>
+                <div class="input-container">
+                    <input type="password" id="password" placeholder="Password" required>
+                </div>
+                <button type="submit" id="auth-btn" class="btn-primary btn-large">Login</button>
+                <p id="auth-error" class="error-message hidden"></p>
+                <p class="toggle-auth">
+                    <span id="auth-toggle-text">Don't have an account?</span>
+                    <a href="#" id="toggle-auth-btn">Sign up</a>
+                </p>
+            </form>
+        </section>
+
+        <!-- Main Dashboard Section (Shortener & Stats) -->
+        <section id="dashboard-section" class="hidden page-section">
+            <div class="page-header">
+                <h2>Dashboard</h2>
+                <p class="text-muted">Create new links and view your overall performance.</p>
+            </div>
+
+            <div class="shortener-box">
+                <form id="shorten-form" autocomplete="off">
+                    <div class="input-group">
+                        <input type="url" id="url-input" placeholder="Enter a long URL to shorten..." required>
+                        <select id="platform-input" class="platform-select">
+                            <option value="Other">Platform</option>
+                            <option value="WhatsApp">WhatsApp</option>
+                            <option value="Instagram">Instagram</option>
+                            <option value="TikTok">TikTok</option>
+                            <option value="Facebook">Facebook</option>
+                        </select>
+                        <button type="submit" id="submit-btn" class="btn-primary">
+                            <span class="btn-text">Shorten</span>
+                            <div class="spinner hidden"></div>
+                        </button>
+                    </div>
+                    <p id="error-message" class="error-message hidden"></p>
+                </form>
+
+                <div id="result-container" class="result-container hidden">
+                    <p class="success-text">Your link is ready!</p>
+                    <div class="result-box">
+                        <a href="#" id="shortened-url" target="_blank" rel="noopener noreferrer"></a>
+                        <button id="copy-btn" class="btn-secondary" title="Copy to clipboard">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-container hidden" id="stats-container">
+                <div class="stat-card">
+                    <h4>Total Clicks</h4>
+                    <p id="total-clicks" class="stat-value">0</p>
+                </div>
+                <div class="stat-card">
+                    <h4>Top Platform</h4>
+                    <p id="top-platform" class="stat-value"
+                        style="font-size: 1.8rem; padding-top: 0.5rem; word-break: break-all;">N/A</p>
+                </div>
+                <div class="stat-card">
+                    <h4>Clicks by Platform</h4>
+                    <ul id="platform-stats" class="platform-stats-list">
+                        <!-- Stats rendered here -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Links List Section -->
+        <section id="links-section" class="hidden page-section">
+            <div class="page-header">
+                <h2>My Links</h2>
+                <p class="text-muted">Manage and track all your generated links.</p>
+            </div>
+
+            <div class="links-list-container">
+                <div id="links-list" class="links-list">
+                    <!-- Links will be injected here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
